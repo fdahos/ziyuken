@@ -19,7 +19,6 @@ const fin = [
 let result;
 
 window.addEventListener("DOMContentLoaded", () => {
-    //console.log("とても汚いコードですが、プログラミングは学習している途中なので、許してください。");
     document.querySelector("#about").style.display = "none";
     const cvs = document.getElementById( "canvas" );
 
@@ -46,7 +45,6 @@ const clean = () => {
     binary1 = "";
     binary2 = "";
     result = "";
-    
     draw();
     judge();
 }
@@ -80,7 +78,7 @@ const fillRoundRect = (x, y, w, h, r) => {
 
 const draw = () => {
     context.beginPath();
-    context.fillStyle = "#fef0e3";
+    context.fillStyle = "#fee3cb";
     context.strokeStyle = "#333";
     context.lineWidth = 2;
     context.moveTo(215, 130);
@@ -97,7 +95,7 @@ const draw = () => {
 
 
     context.beginPath();
-    context.fillStyle = "#fef0e3";
+    context.fillStyle = "#fee3cb";
     context.strokeStyle = "#333";
     context.lineWidth = 2;
     context.moveTo(215, 570);
@@ -202,9 +200,9 @@ const game = () => {
         if(f1 == 1) {
             result = "あいこ";
         } else if(f1 > 16){
-            result = "１の勝ち";
+            result = "上の勝ち";
         } else {
-            result = "２の勝ち";
+            result = "下の勝ち";
         }
         console.log(result);
         context.font = '400 50px "游ゴシック体", "Hiragino Kaku Gothic ProN",sans-serif';
@@ -250,19 +248,19 @@ canvas.addEventListener("click", e => {
                 check1[f1] = true;
                 switch (f1) {
                     case 0:
-                        FingerOne(435,60, "親","指","","", "thumb", "#fef0e3");
+                        FingerOne(435,60, "親","指","","", "thumb", "#fee3cb");
                         break;
                     case 1:
-                        FingerOne(380,100, "人","差","し","指", "index", "#fef0e3");
+                        FingerOne(380,100, "人","差","し","指", "index", "#fee3cb");
                         break;
                     case 2:
-                        FingerOne(325,120, "中","指","","", "middle", "#fef0e3");
+                        FingerOne(325,120, "中","指","","", "middle", "#fee3cb");
                         break;
                     case 3:
-                        FingerOne(270,100, "薬","指","","", "ring", "#fef0e3");
+                        FingerOne(270,100, "薬","指","","", "ring", "#fee3cb");
                         break;
                     case 4:
-                        FingerOne(215,70, "小","指","","", "little", "#fef0e3");
+                        FingerOne(215,70, "小","指","","", "little", "#fee3cb");
                         break;
                 } 
             }
@@ -296,19 +294,19 @@ canvas.addEventListener("click", e => {
                 check2[f2] = true;
                 switch (f2) {
                     case 0:
-                        FingerTwo(215,60, "","","親","指", "thumb", "#fef0e3");
+                        FingerTwo(215,60, "","","親","指", "thumb", "#fee3cb");
                         break;
                     case 1:
-                        FingerTwo(270,100, "人","差","し","指", "index", "#fef0e3");
+                        FingerTwo(270,100, "人","差","し","指", "index", "#fee3cb");
                         break;
                     case 2:
-                        FingerTwo(325,120, "","","中","指", "middle", "#fef0e3");
+                        FingerTwo(325,120, "","","中","指", "middle", "#fee3cb");
                         break;
                     case 3:
-                        FingerTwo(380,100, "","","薬","指", "ring", "#fef0e3");
+                        FingerTwo(380,100, "","","薬","指", "ring", "#fee3cb");
                         break;
                     case 4:
-                        FingerTwo(435,70, "","","小","指", "little", "#fef0e3");
+                        FingerTwo(435,70, "","","小","指", "little", "#fee3cb");
                         break;
                 }
             }
@@ -319,20 +317,29 @@ canvas.addEventListener("click", e => {
     };
 });
 
+let che2 = true;
 const setting = () => {
+    if(che2) {
+        document.querySelector(".set").style.display = "block";
+        che2 = false;
+    } else {
+        document.querySelector(".set").style.display = "none";
+        che2 = true;
+    }
+    
 };
 
-let check = true;
+let che1 = true;
 const about = () => {
-    if (check) {
-        document.querySelector(".about").innerHTML = "判別機";
+    if (che1) {
+        document.querySelector(".about").innerHTML = "判定機に戻る";
         document.querySelector("main").style.display = "none";
         document.querySelector("#about").style.display = "flex";
-        check = false;
+        che1 = false;
     } else {
         document.querySelector(".about").innerHTML = "これについて";
         document.querySelector("main").style.display = "flex";
         document.querySelector("#about").style.display = "none";
-        check = true;
+        che1 = true;
     }
 };
